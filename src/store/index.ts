@@ -1,1 +1,13 @@
-// 전역상태 관련 파일은 해당 폴더에 작성합니다. 이 파일은 제거해도 됩니다.
+import { configureStore } from '@reduxjs/toolkit';
+import toDoReducer from '../components/toDoSlice';
+
+export const store = configureStore({
+  reducer: {
+    toDo: toDoReducer,
+  },
+});
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
